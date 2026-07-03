@@ -17,7 +17,6 @@
     --line: #2C5F6F;
     --line-soft: #DCD6C9;
     --danger: #B4432F;
-    --ok: #2C5F6F;
     --radius: 14px;
   }
   *{ box-sizing: border-box; }
@@ -35,402 +34,140 @@
     justify-content: center;
     -webkit-tap-highlight-color: transparent;
   }
-  .wrap{
-    width: 100%;
-    max-width: 480px;
-    padding: 22px 16px 60px;
-  }
-  header{
-    padding: 6px 2px 18px;
-  }
+  .wrap{ width: 100%; max-width: 480px; padding: 22px 16px 60px; }
+  header{ padding: 6px 2px 18px; }
   .eyebrow{
-    font-family: 'Work Sans', sans-serif;
-    font-weight: 700;
-    font-size: 11px;
-    letter-spacing: .14em;
-    text-transform: uppercase;
-    color: var(--line);
-    display:flex;
-    align-items:center;
-    gap:8px;
+    font-weight: 700; font-size: 11px; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--line); display:flex; align-items:center; gap:8px;
   }
-  .eyebrow .dot{
-    width:7px;height:7px;border-radius:50%;
-    background: var(--accent);
-    box-shadow: 0 0 0 3px rgba(244,180,0,.25);
-  }
+  .eyebrow .dot{ width:7px;height:7px;border-radius:50%; background: var(--accent); box-shadow: 0 0 0 3px rgba(244,180,0,.25); }
   h1{
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 700;
-    font-size: 40px;
-    line-height: .95;
-    letter-spacing: -.01em;
-    margin: 10px 0 6px;
-    text-transform: uppercase;
+    font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 38px; line-height: .95;
+    letter-spacing: -.01em; margin: 10px 0 6px; text-transform: uppercase;
   }
-  .sub{
-    color: var(--muted);
-    font-size: 14.5px;
-    line-height: 1.45;
-    margin: 0;
-  }
+  .sub{ color: var(--muted); font-size: 14.5px; line-height: 1.45; margin: 0; }
 
-  .steps{
-    display:flex;
-    gap:6px;
-    margin: 14px 0 0;
+  .progress{ display:flex; gap:6px; margin: 14px 0 0; }
+  .progress .p{
+    flex:1; text-align:center; padding: 8px 4px; border-radius: 9px; background: #FBFAF7;
+    border: 1.5px solid var(--line-soft); font-family:'Barlow Condensed', sans-serif; font-weight: 700;
+    font-size: 13px; color: var(--muted);
   }
-  .step{
-    flex:1;
-    text-align:center;
-    padding: 8px 4px;
-    border-radius: 9px;
-    background: #FBFAF7;
-    border: 1.5px solid var(--line-soft);
-    font-family:'Barlow Condensed', sans-serif;
-    font-weight: 700;
-    font-size: 13px;
-    color: var(--muted);
-    letter-spacing: .02em;
-  }
-  .step .n{ font-size: 17px; display:block; }
-  .step.active{
-    background: var(--line);
-    border-color: var(--line);
-    color: #fff;
-  }
-  .step.done{
-    background: #EEF4F4;
-    border-color: var(--line);
-    color: var(--line);
-  }
+  .progress .p .n{ font-size: 17px; display:block; }
+  .progress .p.active{ background: var(--line); border-color: var(--line); color: #fff; }
+  .progress .p.done{ background: #EEF4F4; border-color: var(--line); color: var(--line); }
 
   .card{
-    background: var(--surface);
-    border: 1px solid var(--line-soft);
-    border-radius: var(--radius);
-    padding: 18px;
-    margin-top: 16px;
-    box-shadow: 0 1px 0 rgba(35,38,43,.04);
+    background: var(--surface); border: 1px solid var(--line-soft); border-radius: var(--radius);
+    padding: 18px; margin-top: 16px; box-shadow: 0 1px 0 rgba(35,38,43,.04);
   }
   .card h2{
-    font-family:'Barlow Condensed', sans-serif;
-    font-size: 21px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: .01em;
-    margin: 0 0 4px;
+    font-family:'Barlow Condensed', sans-serif; font-size: 21px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: .01em; margin: 0 0 4px;
   }
-  .card .hint{
-    color: var(--muted);
-    font-size: 13px;
-    margin: 0 0 14px;
-    line-height:1.4;
-  }
+  .card .hint{ color: var(--muted); font-size: 13px; margin: 0 0 14px; line-height:1.4; }
 
   input[type=text]{
-    width:100%;
-    padding: 13px 14px;
-    border-radius: 10px;
-    border: 1.5px solid var(--line-soft);
-    font-size: 16px;
-    font-family: inherit;
-    background: #FBFAF7;
-    color: var(--ink);
-    outline: none;
+    width:100%; padding: 13px 14px; border-radius: 10px; border: 1.5px solid var(--line-soft);
+    font-size: 16px; font-family: inherit; background: #FBFAF7; color: var(--ink); outline: none;
     transition: border-color .15s ease;
   }
   input[type=text]:focus{ border-color: var(--line); }
 
   .voter-locked{
-    display:flex;
-    align-items:center;
-    justify-content: space-between;
-    padding: 13px 14px;
-    border-radius: 10px;
-    border: 1.5px solid var(--line-soft);
-    background: #EEF4F4;
-    font-size: 14.5px;
+    display:flex; align-items:center; justify-content: space-between; padding: 13px 14px;
+    border-radius: 10px; border: 1.5px solid var(--line-soft); background: #EEF4F4; font-size: 14.5px;
   }
   .voter-locked b{ color: var(--line); }
   .voter-locked button{
-    background:none;
-    border:none;
-    color: var(--line);
-    font-size: 12.5px;
-    font-weight: 700;
-    text-decoration: underline;
-    cursor: pointer;
-    font-family: inherit;
+    background:none; border:none; color: var(--line); font-size: 12.5px; font-weight: 700;
+    text-decoration: underline; cursor: pointer; font-family: inherit;
   }
 
-  .names{
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    margin-top: 4px;
-  }
+  .names{ display: flex; flex-direction: column; gap: 8px; margin-top: 4px; }
   .name-opt{
-    display:flex;
-    align-items:center;
-    gap: 12px;
-    padding: 12px 14px;
-    border-radius: 10px;
-    border: 1.5px solid var(--line-soft);
-    background: #FBFAF7;
-    cursor: pointer;
-    user-select: none;
+    display:flex; align-items:center; gap: 12px; padding: 12px 14px; border-radius: 10px;
+    border: 1.5px solid var(--line-soft); background: #FBFAF7; cursor: pointer; user-select: none;
     transition: border-color .12s ease, background .12s ease, transform .08s ease;
   }
   .name-opt:active{ transform: scale(.99); }
-  .name-opt .num{
-    font-family:'Barlow Condensed', sans-serif;
-    font-weight:700;
-    font-size: 14px;
-    color: var(--muted);
-    width: 22px;
-    flex-shrink:0;
-  }
-  .name-opt .label{
-    font-weight: 600;
-    font-size: 15.5px;
-    flex: 1;
-  }
-  .name-opt .tick{
-    width: 20px; height:20px;
-    border-radius: 50%;
-    border: 1.5px solid var(--line-soft);
-    flex-shrink:0;
-    position: relative;
-  }
-  .name-opt.selected{
-    border-color: var(--line);
-    background: #EEF4F4;
-  }
-  .name-opt.selected .num{ color: var(--line); }
-  .name-opt.selected .tick{
-    border-color: var(--line);
-    background: var(--line);
-  }
+  .name-opt .label{ font-weight: 600; font-size: 15.5px; flex: 1; }
+  .name-opt .tick{ width: 20px; height:20px; border-radius: 50%; border: 1.5px solid var(--line-soft); flex-shrink:0; position: relative; }
+  .name-opt.selected{ border-color: var(--line); background: #EEF4F4; }
+  .name-opt.selected .tick{ border-color: var(--line); background: var(--line); }
   .name-opt.selected .tick::after{
-    content:"";
-    position:absolute; left:50%; top:50%;
-    width:9px; height:6px;
-    border-left:2px solid #fff;
-    border-bottom:2px solid #fff;
-    transform: translate(-50%,-60%) rotate(-45deg);
+    content:""; position:absolute; left:50%; top:50%; width:9px; height:6px;
+    border-left:2px solid #fff; border-bottom:2px solid #fff; transform: translate(-50%,-60%) rotate(-45deg);
   }
 
+  .selection-hint{ margin-top:10px; font-size:13px; color: var(--line); font-weight:600; }
+
+  .btn-row{ display:flex; gap:8px; margin-top: 16px; }
   .btn{
-    width: 100%;
-    margin-top: 16px;
-    padding: 14px;
-    border: none;
-    border-radius: 10px;
-    background: var(--ink);
-    color: #fff;
-    font-family:'Barlow Condensed', sans-serif;
-    font-weight: 700;
-    font-size: 18px;
-    letter-spacing: .04em;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: transform .08s ease, opacity .15s ease;
+    flex:1; padding: 14px; border: none; border-radius: 10px; background: var(--ink); color: #fff;
+    font-family:'Barlow Condensed', sans-serif; font-weight: 700; font-size: 18px; letter-spacing: .04em;
+    text-transform: uppercase; cursor: pointer; transition: transform .08s ease, opacity .15s ease;
   }
   .btn:active{ transform: scale(.98); }
-  .btn:disabled{ opacity:.4; cursor: not-allowed; }
-  .btn.secondary{
-    background: transparent;
-    color: var(--line);
-    border: 1.5px solid var(--line-soft);
-  }
-  .btn.admin{
-    background: var(--accent);
-    color: var(--accent-ink);
-  }
+  .btn:disabled{ opacity:.35; cursor: not-allowed; }
+  .btn.secondary{ background: transparent; color: var(--line); border: 1.5px solid var(--line-soft); flex: 0 0 90px; }
 
   .status{
-    margin-top: 12px;
-    font-size: 13px;
-    color: var(--line);
-    font-weight: 600;
-    display:none;
-    align-items:center;
-    gap:7px;
+    margin-top: 12px; font-size: 13px; color: var(--line); font-weight: 600; display:none;
+    align-items:center; gap:7px;
   }
   .status.show{ display:flex; }
   .status .dot{ width:7px;height:7px;border-radius:50%; background: var(--line); }
   .status.error{ color: var(--danger); }
   .status.error .dot{ background: var(--danger); }
 
-  /* Results */
-  .progress-row{
-    display:flex;
-    justify-content: space-between;
-    align-items: baseline;
-    margin-bottom: 12px;
+  .trail{
+    background:#FBFAF7; border:1.5px solid var(--line-soft); border-radius:10px; padding:14px;
+    font-size: 13.5px; line-height: 1.7;
   }
-  .progress-row .count{
-    font-family:'Barlow Condensed', sans-serif;
-    font-size: 15px;
-    font-weight: 700;
-    color: var(--line);
-  }
+  .trail b{ color: var(--line); }
+  .trail .final{ font-size: 17px; font-family:'Barlow Condensed', sans-serif; font-weight:700; color: var(--ink); text-transform:uppercase; }
 
-  .voto-row{
-    display:flex;
-    justify-content: space-between;
-    align-items:center;
-    padding: 9px 4px;
-    border-bottom: 1px solid var(--line-soft);
-    font-size: 14px;
+  .voter-card{
+    border: 1px solid var(--line-soft); border-radius: 10px; padding: 12px 14px; margin-bottom: 10px; background: #FBFAF7;
   }
-  .voto-row:last-child{ border-bottom:none; }
-  .voto-row .vname{ font-weight:600; }
-  .voto-row .vchoice{ color: var(--line); font-weight:600; text-align:right; }
+  .voter-card .vname{ font-weight:700; font-size: 14.5px; }
+  .voter-card .vfinal{
+    font-family:'Barlow Condensed', sans-serif; font-weight:700; font-size: 18px; color: var(--line);
+    text-transform: uppercase; margin: 2px 0 6px;
+  }
+  .voter-card .vfinal.pending{ color: var(--muted); font-size: 13px; text-transform:none; font-family: inherit; font-weight:600; }
+  .voter-card .vtrail{ font-size: 12px; color: var(--muted); }
 
-  .bar-item{
-    margin-bottom: 12px;
-  }
-  .bar-top{
-    display:flex;
-    justify-content: space-between;
-    align-items: baseline;
-    margin-bottom: 5px;
-    gap: 8px;
-  }
-  .bar-top .bname{
-    font-weight: 600;
-    font-size: 14.5px;
-  }
-  .bar-top .bcount{
-    font-family:'Barlow Condensed', sans-serif;
-    font-weight:700;
-    font-size: 14px;
-    color: var(--muted);
-    flex-shrink:0;
-  }
-  .bar-track{
-    height: 14px;
-    background: #F1EEE6;
-    border-radius: 7px;
-    overflow: hidden;
-    border: 1px solid var(--line-soft);
-  }
-  .bar-fill{
-    height: 100%;
-    background: linear-gradient(90deg, var(--line), #3E7E90);
-    border-radius: 7px 0 0 7px;
-    transition: width .5s cubic-bezier(.4,0,.2,1);
-    position: relative;
-  }
-  .bar-item.leader .bar-fill{
-    background: linear-gradient(90deg, var(--accent), #FFCB3D);
-  }
+  .bar-item{ margin-bottom: 12px; }
+  .bar-top{ display:flex; justify-content: space-between; align-items: baseline; margin-bottom: 5px; gap: 8px; }
+  .bar-top .bname{ font-weight: 600; font-size: 14.5px; }
+  .bar-top .bcount{ font-family:'Barlow Condensed', sans-serif; font-weight:700; font-size: 14px; color: var(--muted); flex-shrink:0; }
+  .bar-track{ height: 14px; background: #F1EEE6; border-radius: 7px; overflow: hidden; border: 1px solid var(--line-soft); }
+  .bar-fill{ height: 100%; background: linear-gradient(90deg, var(--line), #3E7E90); border-radius: 7px 0 0 7px; transition: width .5s cubic-bezier(.4,0,.2,1); }
+  .bar-item.leader .bar-fill{ background: linear-gradient(90deg, var(--accent), #FFCB3D); }
   .bar-item.leader .bcount{ color: var(--accent-ink); }
-  .bar-item.leader .bname::after{
-    content: " 🏆";
-  }
+  .bar-item.leader .bname::after{ content: " 🏆"; }
 
-  .empty{
-    text-align:center;
-    color: var(--muted);
-    font-size: 13.5px;
-    padding: 18px 0;
-  }
+  .empty{ text-align:center; color: var(--muted); font-size: 13.5px; padding: 18px 0; }
 
-  .history-item{
-    border: 1px solid var(--line-soft);
-    border-radius: 10px;
-    padding: 12px 14px;
-    margin-bottom: 10px;
-    background: #FBFAF7;
-  }
-  .history-item .htitle{
-    font-family:'Barlow Condensed', sans-serif;
-    font-weight:700;
-    font-size: 15px;
-    color: var(--line);
-    margin-bottom: 6px;
-    text-transform: uppercase;
-  }
-  .history-item .hline{
-    font-size: 13px;
-    color: var(--ink);
-    padding: 3px 0;
-    display:flex;
-    justify-content: space-between;
-  }
-  .history-item .hline.advanced{ font-weight:700; }
-  .history-item .hline.advanced::after{ content:" →"; }
-  .history-item .hadvanced-note{
-    margin-top:6px;
-    font-size:12.5px;
-    color: var(--muted);
-  }
-
-  .winner-card{
-    background: linear-gradient(135deg, var(--line), #1c4652);
-    color: #fff;
-    text-align:center;
-    padding: 30px 20px;
-  }
-  .winner-card .weyebrow{
-    font-size: 11px;
-    letter-spacing:.14em;
-    text-transform:uppercase;
-    font-weight:700;
-    opacity:.75;
-  }
+  .winner-card{ background: linear-gradient(135deg, var(--line), #1c4652); color: #fff; text-align:center; padding: 30px 20px; }
+  .winner-card .weyebrow{ font-size: 11px; letter-spacing:.14em; text-transform:uppercase; font-weight:700; opacity:.75; }
   .winner-card .wname{
-    font-family:'Barlow Condensed', sans-serif;
-    font-weight:700;
-    font-size: 42px;
-    text-transform: uppercase;
-    margin: 8px 0 4px;
-    line-height: 1;
+    font-family:'Barlow Condensed', sans-serif; font-weight:700; font-size: 40px; text-transform: uppercase;
+    margin: 8px 0 4px; line-height: 1;
   }
-  .winner-card .wsub{
-    font-size: 13px;
-    opacity: .8;
-  }
+  .winner-card .wsub{ font-size: 13px; opacity: .8; }
 
-  footer{
-    text-align:center;
-    color: var(--muted);
-    font-size: 11.5px;
-    margin-top: 22px;
-    line-height: 1.6;
-  }
-  .refresh-note{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:6px;
-    margin-top: 6px;
-  }
-  .pulse{
-    width:6px;height:6px;border-radius:50%;
-    background: var(--line);
-    animation: pulse 1.6s infinite ease-in-out;
-  }
-  @keyframes pulse{
-    0%,100%{ opacity:.3; }
-    50%{ opacity: 1; }
-  }
+  footer{ text-align:center; color: var(--muted); font-size: 11.5px; margin-top: 22px; line-height: 1.6; }
+  .refresh-note{ display:flex; align-items:center; justify-content:center; gap:6px; margin-top: 6px; }
+  .pulse{ width:6px;height:6px;border-radius:50%; background: var(--line); animation: pulse 1.6s infinite ease-in-out; }
+  @keyframes pulse{ 0%,100%{ opacity:.3; } 50%{ opacity: 1; } }
 
-  .reset-link{
-    text-align:center;
-    margin-top: 18px;
-  }
+  .reset-link{ text-align:center; margin-top: 18px; }
   .reset-link button{
-    background:none;
-    border:none;
-    color: var(--danger);
-    font-size: 12px;
-    text-decoration: underline;
-    cursor: pointer;
-    font-family: inherit;
+    background:none; border:none; color: var(--danger); font-size: 12px; text-decoration: underline;
+    cursor: pointer; font-family: inherit;
   }
 </style>
 </head>
@@ -440,57 +177,52 @@
   <header>
     <div class="eyebrow"><span class="dot"></span>Votación en vivo</div>
     <h1>Elección del<br>Nombre Comercial</h1>
-    <p class="sub">Elegí tus favoritos en cada ronda: 3 primero, 2 después, y por último 1. Los más votados por el grupo pasan de ronda. Podés cambiar tu selección cuando quieras mientras la ronda esté abierta, y todos ven los votos de todos.</p>
-    <div class="steps" id="stepsBar"></div>
+    <p class="sub">Elegí tus 3 favoritos, después tus 2, y por último tu elegido. Así de simple. Todos ven en vivo lo que cada uno fue eligiendo.</p>
+    <div class="progress" id="progressBar"></div>
   </header>
 
   <div class="card">
     <h2>Quién sos</h2>
-    <p class="hint">Escribí tu nombre una vez; después queda guardado y no lo vas a tener que escribir de nuevo.</p>
+    <p class="hint" id="nameHint">Escribí tu nombre y tocá "Empezar a votar".</p>
     <input type="text" id="voterName" placeholder="Tu nombre" maxlength="30" autocomplete="off">
+    <button class="btn" id="startBtn" style="margin-top:12px; display:none;">Empezar a votar</button>
     <div class="voter-locked" id="voterLocked" style="display:none;">
       <span>Votando como <b id="voterLockedName"></b></span>
       <button type="button" id="changeNameBtn">Cambiar</button>
     </div>
   </div>
 
-  <div class="card" id="votingCard">
-    <h2 id="roundTitle">Ronda</h2>
-    <p class="hint" id="roundHint"></p>
+  <div class="card" id="wizardCard" style="display:none;">
+    <h2 id="stepTitle">Paso</h2>
+    <p class="hint" id="stepHint"></p>
     <div class="names" id="namesList"></div>
-    <p class="hint" id="selectionHint" style="margin:10px 0 0;"></p>
-
-    <button class="btn" id="submitBtn" disabled>Enviar mi voto</button>
+    <p class="selection-hint" id="selectionHint"></p>
+    <div class="btn-row">
+      <button class="btn secondary" id="backBtn" style="display:none;">Atrás</button>
+      <button class="btn" id="continueBtn" disabled>Continuar</button>
+    </div>
     <div class="status" id="statusMsg"><span class="dot"></span><span id="statusText"></span></div>
+  </div>
+
+  <div class="card" id="doneCard" style="display:none;">
+    <h2>Tu voto quedó registrado</h2>
+    <div class="trail" id="trailBox"></div>
+    <button class="btn secondary" id="editVoteBtn" style="width:100%; margin-top:14px;">Cambiar mi voto</button>
   </div>
 
   <div class="card" id="winnerCardWrap" style="display:none;">
     <div class="winner-card">
-      <div class="weyebrow">Nombre ganador</div>
+      <div class="weyebrow">🏆 Ganador por unanimidad</div>
       <div class="wname" id="winnerName">—</div>
-      <div class="wsub">Elegido tras 3 rondas de votación</div>
+      <div class="wsub">Todos eligieron el mismo nombre</div>
     </div>
   </div>
 
   <div class="card">
     <h2>Resultado en vivo</h2>
-    <div class="progress-row">
-      <span class="hint" style="margin:0;" id="resultsSub">Actualiza solo cada pocos segundos</span>
-      <span class="count" id="voteCount">0 votos</span>
-    </div>
-    <div id="votesList"></div>
+    <p class="hint" id="resultsSub" style="margin-bottom:10px;">Actualiza solo cada pocos segundos</p>
+    <div id="votersList"></div>
     <div id="resultsBars" style="margin-top:14px;"></div>
-  </div>
-
-  <div class="card" id="historyCard" style="display:none;">
-    <h2>Rondas anteriores</h2>
-    <div id="historyList"></div>
-  </div>
-
-  <div class="card" id="adminCard">
-    <h2>Cerrar ronda</h2>
-    <p class="hint" id="adminHint">Cuando todos hayan votado, cerrá la ronda para pasar a la siguiente etapa.</p>
-    <button class="btn admin" id="closeRoundBtn">Cerrar ronda y avanzar</button>
   </div>
 
   <div class="reset-link">
@@ -508,7 +240,6 @@
 /* ============ CONFIG SUPABASE ============ */
 const SUPABASE_URL = "https://fygiisqhxuufzspibllw.supabase.co";
 const SUPABASE_KEY = "sb_publishable_hvyHr0Qt1zBkvmvO3Mcbow_XQGN06yn";
-
 const sbHeaders = {
   "apikey": SUPABASE_KEY,
   "Authorization": "Bearer " + SUPABASE_KEY,
@@ -520,220 +251,65 @@ const CANDIDATES = [
   "H L S","Hurlingham Linea Seco","C & E","Construction y Estilo","SERVISEC",
   "CALISEC","M SEC","TU CASA EN SECO","TUCASASEC","CASASEC","Calidad - seco"
 ];
-const ADVANCE_SIZES = { 1: 3, 2: 2, 3: 1 };
-const MAX_SELECTIONS = { 1: 3, 2: 2, 3: 1 };
-const TOTAL_ROUNDS = 3;
+const VOTER_NAME_KEY = 'votacion_voter_name';
 
-let selectedNames = [];
-let currentRoundGlobal = 1;
+/* ============ ESTADO LOCAL (mi propio recorrido) ============ */
+let step = 1;      // 1=nombre, 2=elegir 3, 3=elegir 2, 4=elegir final, 5=listo
+let pick3 = [];
+let pick2 = [];
+let finalChoice = null;
 
-const stepsBarEl = document.getElementById('stepsBar');
-const votingCardEl = document.getElementById('votingCard');
-const roundTitleEl = document.getElementById('roundTitle');
-const roundHintEl = document.getElementById('roundHint');
-const namesListEl = document.getElementById('namesList');
-const selectionHintEl = document.getElementById('selectionHint');
+/* ============ ELEMENTOS ============ */
+const progressBar = document.getElementById('progressBar');
 const voterNameInput = document.getElementById('voterName');
+const startBtn = document.getElementById('startBtn');
 const voterLockedEl = document.getElementById('voterLocked');
 const voterLockedNameEl = document.getElementById('voterLockedName');
 const changeNameBtn = document.getElementById('changeNameBtn');
-const submitBtn = document.getElementById('submitBtn');
+const wizardCard = document.getElementById('wizardCard');
+const stepTitleEl = document.getElementById('stepTitle');
+const stepHintEl = document.getElementById('stepHint');
+const namesListEl = document.getElementById('namesList');
+const selectionHintEl = document.getElementById('selectionHint');
+const backBtn = document.getElementById('backBtn');
+const continueBtn = document.getElementById('continueBtn');
 const statusMsg = document.getElementById('statusMsg');
 const statusText = document.getElementById('statusText');
-const voteCountEl = document.getElementById('voteCount');
-const resultsSubEl = document.getElementById('resultsSub');
-const votesListEl = document.getElementById('votesList');
-const resultsBarsEl = document.getElementById('resultsBars');
-const historyCardEl = document.getElementById('historyCard');
-const historyListEl = document.getElementById('historyList');
-const winnerCardWrapEl = document.getElementById('winnerCardWrap');
+const doneCard = document.getElementById('doneCard');
+const trailBox = document.getElementById('trailBox');
+const editVoteBtn = document.getElementById('editVoteBtn');
+const winnerCardWrap = document.getElementById('winnerCardWrap');
 const winnerNameEl = document.getElementById('winnerName');
-const adminCardEl = document.getElementById('adminCard');
-const adminHintEl = document.getElementById('adminHint');
-const closeRoundBtn = document.getElementById('closeRoundBtn');
+const resultsSubEl = document.getElementById('resultsSub');
+const votersListEl = document.getElementById('votersList');
+const resultsBarsEl = document.getElementById('resultsBars');
 const resetBtn = document.getElementById('resetBtn');
 
-function defaultEstado(){
-  return {
-    id: 1,
-    current_round: 1,
-    rounds: {
-      1: { candidates: CANDIDATES.slice(), advanced: null },
-      2: { candidates: [], advanced: null },
-      3: { candidates: [], advanced: null }
-    },
-    winner: null
-  };
-}
-
-/* ============ SUPABASE CALLS ============ */
-async function fetchEstado(){
-  const res = await fetch(`${SUPABASE_URL}/rest/v1/estado_votacion?id=eq.1&select=*`, { headers: sbHeaders });
-  if(!res.ok) throw new Error('No se pudo leer el estado de la votación');
-  const rows = await res.json();
-  if(rows && rows.length) return rows[0];
-  const initial = defaultEstado();
-  await saveEstado(initial);
-  return initial;
-}
-
-async function saveEstado(estado){
-  const payload = { ...estado, id: 1, updated_at: new Date().toISOString() };
-  const res = await fetch(`${SUPABASE_URL}/rest/v1/estado_votacion?on_conflict=id`, {
-    method: 'POST',
-    headers: { ...sbHeaders, Prefer: 'resolution=merge-duplicates,return=minimal' },
-    body: JSON.stringify(payload)
-  });
-  if(!res.ok) throw new Error('No se pudo guardar el estado de la votación');
-}
-
+/* ============ SUPABASE ============ */
 async function fetchAllVotes(){
-  const res = await fetch(`${SUPABASE_URL}/rest/v1/votos_marca?select=round,voter_name,choices`, { headers: sbHeaders });
-  if(!res.ok) throw new Error('No se pudieron leer los votos');
+  const res = await fetch(`${SUPABASE_URL}/rest/v1/votos_finales?select=*`, { headers: sbHeaders });
+  if(!res.ok) throw new Error('No se pudo leer la votación');
   return await res.json();
 }
 
-async function saveVote(round, voterName, choices){
-  const res = await fetch(`${SUPABASE_URL}/rest/v1/votos_marca?on_conflict=round,voter_name`, {
+async function saveMyVote(voter, top3, top2, final){
+  const res = await fetch(`${SUPABASE_URL}/rest/v1/votos_finales?on_conflict=voter_name`, {
     method: 'POST',
     headers: { ...sbHeaders, Prefer: 'resolution=merge-duplicates,return=minimal' },
-    body: JSON.stringify({ round, voter_name: voterName, choices, updated_at: new Date().toISOString() })
+    body: JSON.stringify({ voter_name: voter, top3, top2, final_choice: final, updated_at: new Date().toISOString() })
   });
   if(!res.ok) throw new Error('No se pudo guardar el voto');
 }
 
 async function resetAll(){
-  await fetch(`${SUPABASE_URL}/rest/v1/votos_marca?round=gte.0`, { method: 'DELETE', headers: sbHeaders });
-  const initial = defaultEstado();
-  await saveEstado(initial);
-  return initial;
+  const res = await fetch(`${SUPABASE_URL}/rest/v1/votos_finales?id=gte.0`, { method: 'DELETE', headers: sbHeaders });
+  if(!res.ok) throw new Error('No se pudo reiniciar');
 }
 
-/* ============ ESTADO EN MEMORIA ============ */
-function buildState(estado, voteRows){
-  const state = {
-    currentRound: estado.current_round,
-    winner: estado.winner,
-    rounds: {}
-  };
-  [1,2,3].forEach(r => {
-    const roundDef = estado.rounds[r] || estado.rounds[String(r)] || { candidates: [], advanced: null };
-    const votes = {};
-    voteRows.filter(v => v.round === r).forEach(v => { votes[v.voter_name] = Array.isArray(v.choices) ? v.choices : []; });
-    state.rounds[r] = {
-      candidates: roundDef.candidates || [],
-      advanced: roundDef.advanced || null,
-      closed: !!roundDef.advanced,
-      votes
-    };
-  });
-  return state;
-}
-
-function tally(round){
-  const t = {};
-  round.candidates.forEach(c => t[c] = 0);
-  Object.values(round.votes).forEach(choices => {
-    (choices || []).forEach(choice => {
-      if(t[choice] === undefined) t[choice] = 0;
-      t[choice]++;
-    });
-  });
-  return t;
-}
-
-function rankCandidates(round){
-  const t = tally(round);
-  return round.candidates.slice().sort((a,b) => {
-    if(t[b] !== t[a]) return t[b] - t[a];
-    return a.localeCompare(b, 'es');
-  }).map(name => [name, t[name]]);
-}
-
-function roundHintText(round, candidates){
-  const max = MAX_SELECTIONS[round];
-  if(round === 1) return `Elegí tus ${max} favoritos entre los ${candidates.length} nombres propuestos.`;
-  if(round === 2) return `Ronda de finalistas: elegí tus ${max} favoritos entre los ${candidates.length} nombres que más votos sacaron.`;
-  return `Última ronda: elegí el nombre ganador entre los ${candidates.length} finalistas.`;
-}
-
-/* ============ RENDER ============ */
-function renderSteps(state){
-  stepsBarEl.innerHTML = '';
-  const labels = { 1: '17 → 3', 2: '3 → 2', 3: '2 → 1' };
-  for(let r = 1; r <= TOTAL_ROUNDS; r++){
-    const el = document.createElement('div');
-    el.className = 'step';
-    if(state.winner || state.rounds[r].closed) el.classList.add('done');
-    else if(r === state.currentRound) el.classList.add('active');
-    el.innerHTML = `<span class="n">${r}</span>${labels[r]}`;
-    stepsBarEl.appendChild(el);
-  }
-}
-
-function renderVoterMatch(state){
-  const round = state.rounds[state.currentRound];
-  const voter = voterNameInput.value.trim();
-  let existing = null;
-  if(voter){
-    const key = Object.keys(round.votes).find(k => k.toLowerCase() === voter.toLowerCase());
-    if(key) existing = round.votes[key];
-  }
-  selectedNames = existing ? existing.slice() : [];
-  document.querySelectorAll('.name-opt').forEach(el => {
-    el.classList.toggle('selected', selectedNames.includes(el.dataset.name));
-  });
-  submitBtn.textContent = existing ? 'Actualizar mi voto' : 'Enviar mi voto';
-  updateSelectionHint();
-  updateSubmitState();
-}
-
-function updateSelectionHint(){
-  const max = MAX_SELECTIONS[currentRoundGlobal];
-  selectionHintEl.textContent = `Elegiste ${selectedNames.length} de ${max}.`;
-}
-
-function renderCandidates(state){
-  const round = state.rounds[state.currentRound];
-  currentRoundGlobal = state.currentRound;
-  const max = MAX_SELECTIONS[state.currentRound];
-  namesListEl.innerHTML = '';
-  round.candidates.forEach((name, i) => {
-    const opt = document.createElement('div');
-    opt.className = 'name-opt';
-    opt.dataset.name = name;
-    opt.innerHTML = `
-      <span class="num">${String(i+1).padStart(2,'0')}</span>
-      <span class="label">${name}</span>
-      <span class="tick"></span>
-    `;
-    opt.addEventListener('click', () => {
-      const idx = selectedNames.indexOf(name);
-      if(idx >= 0){
-        selectedNames.splice(idx, 1);
-      }else{
-        if(selectedNames.length >= max) return;
-        selectedNames.push(name);
-      }
-      opt.classList.toggle('selected', selectedNames.includes(name));
-      updateSelectionHint();
-      updateSubmitState();
-    });
-    namesListEl.appendChild(opt);
-  });
-  renderVoterMatch(state);
-}
-
-function updateSubmitState(){
-  const nameOk = voterNameInput.value.trim().length > 0;
-  const max = MAX_SELECTIONS[currentRoundGlobal];
-  submitBtn.disabled = !(nameOk && selectedNames.length === max);
-}
-
-const VOTER_NAME_KEY = 'votacion_voter_name';
-
+/* ============ NOMBRE ============ */
 function lockVoterName(name){
   voterNameInput.style.display = 'none';
+  startBtn.style.display = 'none';
   voterLockedEl.style.display = 'flex';
   voterLockedNameEl.textContent = name;
 }
@@ -741,124 +317,167 @@ function unlockVoterName(){
   voterNameInput.style.display = '';
   voterLockedEl.style.display = 'none';
   voterNameInput.focus();
+  toggleStartBtn();
+}
+function toggleStartBtn(){
+  startBtn.style.display = voterNameInput.value.trim() ? '' : 'none';
 }
 
-voterNameInput.addEventListener('input', async () => {
+voterNameInput.addEventListener('input', () => {
   localStorage.setItem(VOTER_NAME_KEY, voterNameInput.value.trim());
-  const state = await getState();
-  renderVoterMatch(state);
+  toggleStartBtn();
 });
-
-changeNameBtn.addEventListener('click', () => {
-  unlockVoterName();
+voterNameInput.addEventListener('keypress', (e) => {
+  if(e.key === 'Enter') startWizard();
 });
+startBtn.addEventListener('click', startWizard);
+changeNameBtn.addEventListener('click', () => unlockVoterName());
 
-function renderCurrentVotes(state){
-  const round = state.rounds[state.currentRound];
-  const entries = Object.entries(round.votes);
-  const total = entries.length;
-  voteCountEl.textContent = `${total} voto${total === 1 ? '' : 's'}`;
-  resultsSubEl.textContent = state.winner ? 'Votación cerrada' : 'Actualiza solo cada pocos segundos';
-
-  if(total === 0){
-    votesListEl.innerHTML = '<div class="empty">Todavía no hay votos en esta ronda. Sé el primero.</div>';
-    resultsBarsEl.innerHTML = '';
-    return;
+/* ============ WIZARD ============ */
+function renderProgress(){
+  progressBar.innerHTML = '';
+  const labels = ['3 favoritos', '2 finalistas', 'Tu elegido'];
+  for(let i = 1; i <= 3; i++){
+    const el = document.createElement('div');
+    el.className = 'p';
+    const wizardStep = i + 1; // steps 2,3,4
+    if(step > wizardStep || step === 5) el.classList.add('done');
+    else if(step === wizardStep) el.classList.add('active');
+    el.innerHTML = `<span class="n">${i}</span>${labels[i-1]}`;
+    progressBar.appendChild(el);
   }
-
-  votesListEl.innerHTML = entries
-    .sort((a,b) => a[0].localeCompare(b[0], 'es'))
-    .map(([voter, choices]) => `
-      <div class="voto-row">
-        <span class="vname">${voter}</span>
-        <span class="vchoice">${(choices || []).join(', ')}</span>
-      </div>
-    `).join('');
-
-  const ranked = rankCandidates(round).filter(([, count]) => count > 0);
-  const maxVotes = ranked.length ? ranked[0][1] : 0;
-
-  resultsBarsEl.innerHTML = ranked.map(([name, count]) => {
-    const pct = Math.round((count / total) * 100);
-    const isLeader = count === maxVotes && count > 0;
-    return `
-      <div class="bar-item ${isLeader ? 'leader' : ''}">
-        <div class="bar-top">
-          <span class="bname">${name}</span>
-          <span class="bcount">${count} · ${pct}%</span>
-        </div>
-        <div class="bar-track"><div class="bar-fill" style="width:${pct}%"></div></div>
-      </div>
-    `;
-  }).join('');
 }
 
-function renderHistory(state){
-  const closedRounds = [1,2,3].filter(r => state.rounds[r].closed);
-  if(closedRounds.length === 0){
-    historyCardEl.style.display = 'none';
-    return;
-  }
-  historyCardEl.style.display = '';
-  historyListEl.innerHTML = closedRounds.map(r => {
-    const round = state.rounds[r];
-    const ranked = rankCandidates(round);
-    const advancedSet = new Set(round.advanced || []);
-    const lines = ranked.map(([name, count]) => `
-      <div class="hline ${advancedSet.has(name) ? 'advanced' : ''}">
-        <span>${name}</span><span>${count}</span>
-      </div>
-    `).join('');
-    const note = r < TOTAL_ROUNDS
-      ? `Pasan a la siguiente ronda: ${(round.advanced || []).join(', ')}`
-      : `Nombre ganador: ${(round.advanced || [])[0] || '—'}`;
-    return `
-      <div class="history-item">
-        <div class="htitle">Ronda ${r}</div>
-        ${lines}
-        <div class="hadvanced-note">${note}</div>
-      </div>
-    `;
-  }).join('');
+function startWizard(){
+  const voter = voterNameInput.value.trim();
+  if(!voter) return;
+  localStorage.setItem(VOTER_NAME_KEY, voter);
+  lockVoterName(voter);
+  step = 2;
+  pick3 = []; pick2 = []; finalChoice = null;
+  wizardCard.style.display = '';
+  doneCard.style.display = 'none';
+  renderStep();
 }
 
-function renderWinner(state){
-  if(state.winner){
-    winnerCardWrapEl.style.display = '';
-    winnerNameEl.textContent = state.winner;
-    votingCardEl.style.display = 'none';
-    adminCardEl.style.display = 'none';
+function renderStep(){
+  renderProgress();
+  clearStatus();
+  let pool, max, title, hint;
+  if(step === 2){
+    pool = CANDIDATES; max = 3;
+    title = 'Paso 1 · Tus 3 favoritos';
+    hint = 'Tocá 3 nombres que más te gusten.';
+  }else if(step === 3){
+    pool = pick3; max = 2;
+    title = 'Paso 2 · De esos 3, elegí 2';
+    hint = 'Achicamos a tus 2 finalistas.';
+  }else if(step === 4){
+    pool = pick2; max = 1;
+    title = 'Paso 3 · Tu elegido';
+    hint = 'El nombre que más te gusta de los 2.';
   }else{
-    winnerCardWrapEl.style.display = 'none';
-    votingCardEl.style.display = '';
-    adminCardEl.style.display = '';
+    return;
   }
+  stepTitleEl.textContent = title;
+  stepHintEl.textContent = hint;
+
+  const current = step === 2 ? pick3 : step === 3 ? pick2 : (finalChoice ? [finalChoice] : []);
+  namesListEl.innerHTML = '';
+  pool.forEach(name => {
+    const opt = document.createElement('div');
+    opt.className = 'name-opt' + (current.includes(name) ? ' selected' : '');
+    opt.dataset.name = name;
+    opt.innerHTML = `<span class="label">${name}</span><span class="tick"></span>`;
+    opt.addEventListener('click', () => toggleSelection(name, max));
+    namesListEl.appendChild(opt);
+  });
+
+  backBtn.style.display = step > 2 ? '' : 'none';
+  updateSelectionHint(max);
+  updateContinueState(max);
 }
 
-function renderRoundHeader(state){
-  const r = state.currentRound;
-  const round = state.rounds[r];
-  roundTitleEl.textContent = `Ronda ${r} de ${TOTAL_ROUNDS}`;
-  roundHintEl.textContent = roundHintText(r, round.candidates);
-  const remaining = ADVANCE_SIZES[r];
-  adminHintEl.textContent = r < TOTAL_ROUNDS
-    ? `Cuando todos hayan votado, cerrá la ronda: pasan los ${remaining} nombres más votados.`
-    : `Cuando todos hayan votado, cerrá la ronda para conocer el nombre ganador.`;
-}
-
-let renderedRound = null;
-
-async function renderAll(state){
-  renderSteps(state);
-  renderRoundHeader(state);
-  if(state.currentRound !== renderedRound){
-    renderCandidates(state);
-    renderedRound = state.currentRound;
+function toggleSelection(name, max){
+  let arr = step === 2 ? pick3 : step === 3 ? pick2 : null;
+  if(step === 4){
+    finalChoice = finalChoice === name ? null : name;
+  }else{
+    const idx = arr.indexOf(name);
+    if(idx >= 0){
+      arr.splice(idx, 1);
+    }else{
+      if(arr.length >= max) return;
+      arr.push(name);
+    }
   }
-  renderCurrentVotes(state);
-  renderHistory(state);
-  renderWinner(state);
+  document.querySelectorAll('.name-opt').forEach(el => {
+    const n = el.dataset.name;
+    const sel = step === 4 ? finalChoice === n : arr.includes(n);
+    el.classList.toggle('selected', sel);
+  });
+  updateSelectionHint(max);
+  updateContinueState(max);
 }
+
+function updateSelectionHint(max){
+  const count = step === 2 ? pick3.length : step === 3 ? pick2.length : (finalChoice ? 1 : 0);
+  selectionHintEl.textContent = `Elegiste ${count} de ${max}.`;
+}
+
+function updateContinueState(max){
+  const count = step === 2 ? pick3.length : step === 3 ? pick2.length : (finalChoice ? 1 : 0);
+  continueBtn.disabled = count !== max;
+  continueBtn.textContent = step === 4 ? 'Confirmar mi voto' : 'Continuar';
+}
+
+backBtn.addEventListener('click', () => {
+  if(step > 2){ step -= 1; renderStep(); }
+});
+
+continueBtn.addEventListener('click', async () => {
+  if(step === 2){
+    step = 3; renderStep(); return;
+  }
+  if(step === 3){
+    step = 4; renderStep(); return;
+  }
+  if(step === 4){
+    const voter = voterLockedNameEl.textContent || voterNameInput.value.trim();
+    continueBtn.disabled = true;
+    const prevLabel = continueBtn.textContent;
+    continueBtn.textContent = 'Guardando...';
+    try{
+      await saveMyVote(voter, pick3, pick2, finalChoice);
+      step = 5;
+      showTrail();
+      wizardCard.style.display = 'none';
+      doneCard.style.display = '';
+      await refreshResults();
+    }catch(e){
+      showError('No se pudo guardar tu voto. Probá de nuevo.');
+    }finally{
+      continueBtn.disabled = false;
+      continueBtn.textContent = prevLabel;
+    }
+  }
+});
+
+function showTrail(){
+  trailBox.innerHTML = `
+    <div><b>3 favoritos:</b> ${pick3.join(', ')}</div>
+    <div style="margin-top:6px;"><b>2 finalistas:</b> ${pick2.join(', ')}</div>
+    <div style="margin-top:10px;">Tu elegido:</div>
+    <div class="final">${finalChoice}</div>
+  `;
+}
+
+editVoteBtn.addEventListener('click', () => {
+  step = 2;
+  doneCard.style.display = 'none';
+  wizardCard.style.display = '';
+  renderStep();
+});
 
 function showError(msg){
   statusText.textContent = msg;
@@ -868,119 +487,100 @@ function clearStatus(){
   statusMsg.classList.remove('show', 'error');
 }
 
-async function getState(){
-  const [estado, voteRows] = await Promise.all([fetchEstado(), fetchAllVotes()]);
-  return buildState(estado, voteRows);
-}
+/* ============ RESULTADOS EN VIVO ============ */
+function renderResults(rows){
+  const total = rows.length;
+  resultsSubEl.textContent = 'Actualiza solo cada pocos segundos';
 
-async function refresh(){
-  try{
-    const state = await getState();
-    await renderAll(state);
-  }catch(e){
-    showError('No se pudo conectar con la base de datos. Revisá tu conexión.');
-  }
-}
-
-/* ============ EVENTOS ============ */
-submitBtn.addEventListener('click', async () => {
-  const voter = voterNameInput.value.trim();
-  const max = MAX_SELECTIONS[currentRoundGlobal];
-  if(!voter || selectedNames.length !== max) return;
-  submitBtn.disabled = true;
-  const prevLabel = submitBtn.textContent;
-  submitBtn.textContent = 'Enviando...';
-  try{
-    const state = await getState();
-    const round = state.rounds[state.currentRound];
-    if(round.closed){
-      showError('Esta ronda ya se cerró. Se está pasando a la siguiente.');
-      await refresh();
-      return;
-    }
-    await saveVote(state.currentRound, voter, selectedNames.slice());
-    localStorage.setItem(VOTER_NAME_KEY, voter);
-    lockVoterName(voter);
-    statusMsg.classList.remove('error');
-    statusText.textContent = `Voto registrado: ${voter} → ${selectedNames.join(', ')}`;
-    statusMsg.classList.add('show');
-    const newState = await getState();
-    await renderAll(newState);
-  }catch(e){
-    showError('No se pudo enviar el voto. Probá de nuevo.');
-  }finally{
-    submitBtn.disabled = false;
-    submitBtn.textContent = prevLabel;
-    updateSubmitState();
-  }
-});
-
-closeRoundBtn.addEventListener('click', async () => {
-  let state;
-  try{
-    state = await getState();
-  }catch(e){
-    showError('No se pudo conectar con la base de datos.');
+  if(total === 0){
+    votersListEl.innerHTML = '<div class="empty">Todavía nadie votó. Sé el primero.</div>';
+    resultsBarsEl.innerHTML = '';
+    winnerCardWrap.style.display = 'none';
     return;
   }
-  const round = state.rounds[state.currentRound];
-  const voteCount = Object.keys(round.votes).length;
-  if(voteCount === 0){
-    alert('Todavía no hay votos en esta ronda.');
-    return;
+
+  votersListEl.innerHTML = rows
+    .slice()
+    .sort((a,b) => a.voter_name.localeCompare(b.voter_name, 'es'))
+    .map(r => {
+      const finished = !!r.final_choice;
+      return `
+        <div class="voter-card">
+          <div class="vname">${r.voter_name}</div>
+          <div class="vfinal ${finished ? '' : 'pending'}">${finished ? r.final_choice : 'Todavía eligiendo…'}</div>
+          ${(r.top3 && r.top3.length) ? `<div class="vtrail">3 favoritos: ${r.top3.join(', ')}${(r.top2 && r.top2.length) ? ' · 2 finalistas: ' + r.top2.join(', ') : ''}</div>` : ''}
+        </div>
+      `;
+    }).join('');
+
+  const finalRows = rows.filter(r => r.final_choice);
+  const tally = {};
+  finalRows.forEach(r => { tally[r.final_choice] = (tally[r.final_choice] || 0) + 1; });
+  const ranked = Object.entries(tally).sort((a,b) => b[1] - a[1]);
+  const maxVotes = ranked.length ? ranked[0][1] : 0;
+  const finishedTotal = finalRows.length;
+
+  if(finishedTotal === 0){
+    resultsBarsEl.innerHTML = '<div class="empty">Nadie llegó a la elección final todavía.</div>';
+  }else{
+    resultsBarsEl.innerHTML = ranked.map(([name, count]) => {
+      const pct = Math.round((count / finishedTotal) * 100);
+      const isLeader = count === maxVotes;
+      return `
+        <div class="bar-item ${isLeader ? 'leader' : ''}">
+          <div class="bar-top"><span class="bname">${name}</span><span class="bcount">${count} · ${pct}%</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width:${pct}%"></div></div>
+        </div>
+      `;
+    }).join('');
   }
-  const r = state.currentRound;
-  const confirmMsg = r < TOTAL_ROUNDS
-    ? `¿Cerrar la Ronda ${r}? Pasan los ${ADVANCE_SIZES[r]} nombres más votados a la siguiente ronda.`
-    : `¿Cerrar la Ronda ${r}? Se define el nombre ganador y ya no se puede volver a votar.`;
-  if(!confirm(confirmMsg)) return;
 
-  const ranked = rankCandidates(round);
-  const advanceCount = ADVANCE_SIZES[r];
-  const advanced = ranked.slice(0, advanceCount).map(([name]) => name);
+  // Ganador por unanimidad: todos los que ya terminaron eligieron lo mismo, y hay al menos 2 votos finales
+  if(finishedTotal >= 2 && ranked.length === 1){
+    winnerCardWrap.style.display = '';
+    winnerNameEl.textContent = ranked[0][0];
+  }else{
+    winnerCardWrap.style.display = 'none';
+  }
+}
 
+async function refreshResults(){
   try{
-    const estado = await fetchEstado();
-    estado.rounds[r].advanced = advanced;
-    if(r < TOTAL_ROUNDS){
-      estado.rounds[r + 1].candidates = advanced;
-      estado.current_round = r + 1;
-    }else{
-      estado.winner = advanced[0];
-    }
-    await saveEstado(estado);
-    voterNameInput.value = '';
-    clearStatus();
-    await refresh();
+    const rows = await fetchAllVotes();
+    renderResults(rows);
   }catch(e){
-    showError('No se pudo cerrar la ronda. Probá de nuevo.');
+    resultsSubEl.textContent = 'No se pudo conectar con la base de datos.';
   }
-});
+}
 
+/* ============ RESET ============ */
 resetBtn.addEventListener('click', async () => {
-  if(!confirm('¿Reiniciar toda la votación? Se borran los votos de las 3 rondas y se vuelve a empezar de cero.')) return;
+  if(!confirm('¿Reiniciar toda la votación? Se borran los votos de todos.')) return;
   try{
     await resetAll();
-    selectedNames = [];
-    voterNameInput.value = '';
     localStorage.removeItem(VOTER_NAME_KEY);
+    step = 1; pick3 = []; pick2 = []; finalChoice = null;
     unlockVoterName();
-    renderedRound = null;
+    voterNameInput.value = '';
+    wizardCard.style.display = 'none';
+    doneCard.style.display = 'none';
     clearStatus();
-    await refresh();
+    await refreshResults();
   }catch(e){
-    showError('No se pudo reiniciar la votación.');
+    resultsSubEl.textContent = 'No se pudo reiniciar. Probá de nuevo.';
   }
 });
 
+/* ============ INICIO ============ */
 const savedVoterName = localStorage.getItem(VOTER_NAME_KEY);
 if(savedVoterName){
   voterNameInput.value = savedVoterName;
-  lockVoterName(savedVoterName);
+  startWizard();
 }
 
-refresh();
-setInterval(refresh, 4000);
+renderProgress();
+refreshResults();
+setInterval(refreshResults, 4000);
 </script>
 </body>
 </html>
