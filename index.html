@@ -212,9 +212,9 @@
 
   <div class="card" id="winnerCardWrap" style="display:none;">
     <div class="winner-card">
-      <div class="weyebrow">🏆 Ganador por unanimidad</div>
+      <div class="weyebrow">🎉 Felicidades, ya tenemos nombre</div>
       <div class="wname" id="winnerName">—</div>
-      <div class="wsub">Todos eligieron el mismo nombre</div>
+      <div class="wsub">Todos coincidieron 🎉</div>
     </div>
   </div>
 
@@ -223,6 +223,12 @@
     <p class="hint" id="resultsSub" style="margin-bottom:10px;">Actualiza solo cada pocos segundos</p>
     <div id="votersList"></div>
     <div id="resultsBars" style="margin-top:14px;"></div>
+  </div>
+
+  <div class="card" id="agreementCard" style="display:none;">
+    <h2>Elegí entre las opciones finales</h2>
+    <p class="hint">Estos son los nombres que cada uno eligió. Tocá el que prefieras — podés cambiarlo cuando quieras.</p>
+    <div class="names" id="agreementList"></div>
   </div>
 
   <div class="reset-link">
@@ -283,6 +289,8 @@ const winnerNameEl = document.getElementById('winnerName');
 const resultsSubEl = document.getElementById('resultsSub');
 const votersListEl = document.getElementById('votersList');
 const resultsBarsEl = document.getElementById('resultsBars');
+const agreementCard = document.getElementById('agreementCard');
+const agreementListEl = document.getElementById('agreementList');
 const resetBtn = document.getElementById('resetBtn');
 
 /* ============ SUPABASE ============ */
@@ -299,6 +307,15 @@ async function saveMyVote(voter, top3, top2, final){
     body: JSON.stringify({ voter_name: voter, top3, top2, final_choice: final, updated_at: new Date().toISOString() })
   });
   if(!res.ok) throw new Error('No se pudo guardar el voto');
+}
+
+async function saveConsensus(voter, choice){
+  const res = await fetch(`${SUPABASE_URL}/rest/v1/votos_finales?on_conflict=voter_name`, {
+    method: 'POST',
+    headers: { ...sbHeaders, Prefer: 'resolution=merge-duplicates,return=minimal' },
+    body: JSON.stringify({ voter_name: voter, consensus_choice: choice, updated_at: new Date().toISOString() })
+  });
+  if(!res.ok) throw new Error('No se pudo guardar tu elección');
 }
 
 async function resetAll(){
@@ -496,6 +513,7 @@ function renderResults(rows){
     votersListEl.innerHTML = '<div class="empty">Todavía nadie votó. Sé el primero.</div>';
     resultsBarsEl.innerHTML = '';
     winnerCardWrap.style.display = 'none';
+    agreementCard.style.display = 'none';
     return;
   }
 
@@ -535,13 +553,58 @@ function renderResults(rows){
     }).join('');
   }
 
-  // Ganador por unanimidad: todos los que ya terminaron eligieron lo mismo, y hay al menos 2 votos finales
+  // Ganador: por acuerdo natural (todos coinciden en su elección final)
+  // o por ronda de acuerdo (todos coinciden en la opción que tocaron)
+  let winnerName = null;
   if(finishedTotal >= 2 && ranked.length === 1){
+    winnerName = ranked[0][0];
+  }else{
+    const withConsensus = finalRows.filter(r => r.consensus_choice);
+    if(withConsensus.length === finalRows.length && finalRows.length >= 2){
+      const distinctConsensus = [...new Set(withConsensus.map(r => r.consensus_choice))];
+      if(distinctConsensus.length === 1) winnerName = distinctConsensus[0];
+    }
+  }
+  if(winnerName){
     winnerCardWrap.style.display = '';
-    winnerNameEl.textContent = ranked[0][0];
+    winnerNameEl.textContent = winnerName;
   }else{
     winnerCardWrap.style.display = 'none';
   }
+
+  renderAgreement(finalRows);
+}
+
+function renderAgreement(finalRows){
+  if(finalRows.length === 0){
+    agreementCard.style.display = 'none';
+    return;
+  }
+  const pool = [...new Set(finalRows.map(r => r.final_choice))];
+  const myName = voterLockedNameEl.textContent.trim();
+  const myRow = finalRows.find(r => r.voter_name.toLowerCase() === myName.toLowerCase());
+  const myConsensus = myRow ? myRow.consensus_choice : null;
+
+  agreementCard.style.display = '';
+  agreementListEl.innerHTML = '';
+  pool.forEach(name => {
+    const opt = document.createElement('div');
+    opt.className = 'name-opt' + (name === myConsensus ? ' selected' : '');
+    opt.innerHTML = `<span class="label">${name}</span><span class="tick"></span>`;
+    if(!myName){
+      opt.style.opacity = '.5';
+    }else{
+      opt.addEventListener('click', async () => {
+        try{
+          await saveConsensus(myName, name);
+          await refreshResults();
+        }catch(e){
+          resultsSubEl.textContent = 'No se pudo guardar tu elección. Probá de nuevo.';
+        }
+      });
+    }
+    agreementListEl.appendChild(opt);
+  });
 }
 
 async function refreshResults(){
