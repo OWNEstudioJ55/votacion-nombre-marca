@@ -142,6 +142,28 @@
   }
   input[type=text]:focus{ border-color: var(--line); }
 
+  .voter-locked{
+    display:flex;
+    align-items:center;
+    justify-content: space-between;
+    padding: 13px 14px;
+    border-radius: 10px;
+    border: 1.5px solid var(--line-soft);
+    background: #EEF4F4;
+    font-size: 14.5px;
+  }
+  .voter-locked b{ color: var(--line); }
+  .voter-locked button{
+    background:none;
+    border:none;
+    color: var(--line);
+    font-size: 12.5px;
+    font-weight: 700;
+    text-decoration: underline;
+    cursor: pointer;
+    font-family: inherit;
+  }
+
   .names{
     display: flex;
     flex-direction: column;
@@ -424,8 +446,12 @@
 
   <div class="card">
     <h2>Quién sos</h2>
-    <p class="hint">Escribí tu nombre para identificar tu voto. Si ya votaste en esta ronda, vas a ver tu elección marcada.</p>
+    <p class="hint">Escribí tu nombre una vez; después queda guardado y no lo vas a tener que escribir de nuevo.</p>
     <input type="text" id="voterName" placeholder="Tu nombre" maxlength="30" autocomplete="off">
+    <div class="voter-locked" id="voterLocked" style="display:none;">
+      <span>Votando como <b id="voterLockedName"></b></span>
+      <button type="button" id="changeNameBtn">Cambiar</button>
+    </div>
   </div>
 
   <div class="card" id="votingCard">
@@ -508,6 +534,9 @@ const roundHintEl = document.getElementById('roundHint');
 const namesListEl = document.getElementById('namesList');
 const selectionHintEl = document.getElementById('selectionHint');
 const voterNameInput = document.getElementById('voterName');
+const voterLockedEl = document.getElementById('voterLocked');
+const voterLockedNameEl = document.getElementById('voterLockedName');
+const changeNameBtn = document.getElementById('changeNameBtn');
 const submitBtn = document.getElementById('submitBtn');
 const statusMsg = document.getElementById('statusMsg');
 const statusText = document.getElementById('statusText');
@@ -703,10 +732,25 @@ function updateSubmitState(){
 
 const VOTER_NAME_KEY = 'votacion_voter_name';
 
+function lockVoterName(name){
+  voterNameInput.style.display = 'none';
+  voterLockedEl.style.display = 'flex';
+  voterLockedNameEl.textContent = name;
+}
+function unlockVoterName(){
+  voterNameInput.style.display = '';
+  voterLockedEl.style.display = 'none';
+  voterNameInput.focus();
+}
+
 voterNameInput.addEventListener('input', async () => {
   localStorage.setItem(VOTER_NAME_KEY, voterNameInput.value.trim());
   const state = await getState();
   renderVoterMatch(state);
+});
+
+changeNameBtn.addEventListener('click', () => {
+  unlockVoterName();
 });
 
 function renderCurrentVotes(state){
@@ -855,6 +899,8 @@ submitBtn.addEventListener('click', async () => {
       return;
     }
     await saveVote(state.currentRound, voter, selectedNames.slice());
+    localStorage.setItem(VOTER_NAME_KEY, voter);
+    lockVoterName(voter);
     statusMsg.classList.remove('error');
     statusText.textContent = `Voto registrado: ${voter} → ${selectedNames.join(', ')}`;
     statusMsg.classList.add('show');
@@ -918,6 +964,7 @@ resetBtn.addEventListener('click', async () => {
     selectedNames = [];
     voterNameInput.value = '';
     localStorage.removeItem(VOTER_NAME_KEY);
+    unlockVoterName();
     renderedRound = null;
     clearStatus();
     await refresh();
@@ -927,7 +974,10 @@ resetBtn.addEventListener('click', async () => {
 });
 
 const savedVoterName = localStorage.getItem(VOTER_NAME_KEY);
-if(savedVoterName) voterNameInput.value = savedVoterName;
+if(savedVoterName){
+  voterNameInput.value = savedVoterName;
+  lockVoterName(savedVoterName);
+}
 
 refresh();
 setInterval(refresh, 4000);
