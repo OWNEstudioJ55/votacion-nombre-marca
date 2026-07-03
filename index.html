@@ -701,7 +701,10 @@ function updateSubmitState(){
   submitBtn.disabled = !(nameOk && selectedNames.length === max);
 }
 
+const VOTER_NAME_KEY = 'votacion_voter_name';
+
 voterNameInput.addEventListener('input', async () => {
+  localStorage.setItem(VOTER_NAME_KEY, voterNameInput.value.trim());
   const state = await getState();
   renderVoterMatch(state);
 });
@@ -799,10 +802,15 @@ function renderRoundHeader(state){
     : `Cuando todos hayan votado, cerrá la ronda para conocer el nombre ganador.`;
 }
 
+let renderedRound = null;
+
 async function renderAll(state){
   renderSteps(state);
   renderRoundHeader(state);
-  renderCandidates(state);
+  if(state.currentRound !== renderedRound){
+    renderCandidates(state);
+    renderedRound = state.currentRound;
+  }
   renderCurrentVotes(state);
   renderHistory(state);
   renderWinner(state);
@@ -909,12 +917,17 @@ resetBtn.addEventListener('click', async () => {
     await resetAll();
     selectedNames = [];
     voterNameInput.value = '';
+    localStorage.removeItem(VOTER_NAME_KEY);
+    renderedRound = null;
     clearStatus();
     await refresh();
   }catch(e){
     showError('No se pudo reiniciar la votación.');
   }
 });
+
+const savedVoterName = localStorage.getItem(VOTER_NAME_KEY);
+if(savedVoterName) voterNameInput.value = savedVoterName;
 
 refresh();
 setInterval(refresh, 4000);
